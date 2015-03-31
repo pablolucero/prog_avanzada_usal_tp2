@@ -1,9 +1,4 @@
 import negocio.BandsEquipment;
-import negocio.ElectricGuitar;
-import negocio.StringedInstrument;
-import presentacion.Menu;
-
-import java.util.*;
 
 public class Main {
 

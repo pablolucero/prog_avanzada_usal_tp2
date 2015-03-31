@@ -50,8 +50,8 @@ public class BandsEquipment {
         final List<PercussionInstrument> percussion = getPercussion();
         Set<PercussionInstrument> percussionSet = new HashSet<>(percussion);
 
-        for (PercussionInstrument percussionInstrument : percussionSet) {
-            System.out.println(Collections.frequency(percussion, percussionInstrument) + " ");
+        for (Instrument percussionInstrument : percussionSet) {
+            System.out.print(Collections.frequency(percussion, percussionInstrument) + " ");
             percussionInstrument.play();
         }
 
