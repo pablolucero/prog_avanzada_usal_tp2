@@ -5,7 +5,7 @@ public abstract class StringedInstrument extends Instrument {
 
     @Override public boolean equals(Object obj) {
 
-        if (!(obj instanceof StringedInstrument))
+        if (obj == null || !(obj instanceof StringedInstrument))
             return false;
         if (obj == this)
             return true;

@@ -6,7 +6,7 @@ public abstract class PercussionInstrument extends Instrument {
 
     @Override public boolean equals(Object obj) {
 
-        if (!(obj instanceof PercussionInstrument))
+        if (obj == null || !(obj instanceof PercussionInstrument))
             return false;
         if (obj == this)
             return true;
