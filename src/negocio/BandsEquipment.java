@@ -38,6 +38,8 @@ public class BandsEquipment {
 
     public void pruebaDeSonido() {
 
+        System.out.println("Test sound");
+
         final List<StringedInstrument> stringed = getStringed();
         Set<Instrument> stringedSet = new HashSet<>(stringed);
 
@@ -54,6 +56,25 @@ public class BandsEquipment {
             percussionInstrument.play();
         }
 
+        List<PlugType> plugTypeList = new ArrayList<>();
+
+        for (StringedInstrument stringedInstrument : stringed) {
+            if (stringedInstrument instanceof ElectricGuitar) {
+                plugTypeList.add(((ElectricGuitar) stringedInstrument).getPlug());
+            }
+
+            if (stringedInstrument instanceof ElectricBassGuitar) {
+                plugTypeList.add(((ElectricBassGuitar) stringedInstrument).getPlug());
+            }
+        }
+
+        System.out.println("Need");
+        final int V9Frequency = Collections.frequency(plugTypeList, PlugType.NINE_VOLTS);
+        final int V10Frequency = Collections.frequency(plugTypeList, PlugType.TEN_VOLTS);
+        final int V12Frequency = Collections.frequency(plugTypeList, PlugType.TWELVE_VOLTS);
+        if (V9Frequency > 0) System.out.println(V9Frequency + " 9 volts plug");
+        if (V10Frequency > 0) System.out.println(V10Frequency + " 10 volts plug");
+        if (V12Frequency > 0) System.out.println(V12Frequency + " 12 volts plug");
     }
 
     public List<PercussionInstrument> getPercussion() {
