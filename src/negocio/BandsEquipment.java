@@ -41,7 +41,7 @@ public class BandsEquipment {
         System.out.println("Test sound");
 
         final List<StringedInstrument> stringed = getStringed();
-        Set<Instrument> stringedSet = new HashSet<>(stringed);
+        Set<StringedInstrument> stringedSet = new HashSet<>(stringed);
 
         for (Instrument stringedInstrument : stringedSet) {
             System.out.print(Collections.frequency(stringed, stringedInstrument) + " ");
