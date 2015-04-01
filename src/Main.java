@@ -1,70 +1,76 @@
 import negocio.BandsEquipment;
+import negocio.Drums;
+import negocio.ElectricBassGuitar;
+import negocio.ElectricGuitar;
+import presentacion.Menu;
+
+import static presentacion.IOManager.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-//        final ElectricGuitar gibson = new ElectricGuitar("Gibson", 6);
-//        final ElectricGuitar gibson2 = new ElectricGuitar("Gibson", 6);
-//
-//        Set set = new HashSet<StringedInstrument>();
-//        set.add(gibson);
-//        set.add(gibson);
-//        System.out.println("set.size(): " + set.size());
-//
-//        List lista = new ArrayList<StringedInstrument>();
-//        lista.add(gibson);
-//        lista.add(gibson);
-//
-//        System.out.println(Collections.frequency(lista, gibson));
-//
-//        System.out.println(gibson.equals(gibson2));
+        Menu menu = new Menu();
+        boolean fin = false;
 
+        while (!fin) {
+            menu.mostrarMenu();
+            int opcionMenuPrincipal = menu.getOpcion();
 
-        final BandsEquipment bandsEquipmentFull = BandsEquipment.generarBandsEquipmentFull();
-        bandsEquipmentFull.pruebaDeSonido();
+            switch (opcionMenuPrincipal) {
 
-        System.out.println(" ");
+                case 1:
+                    BandsEquipment.generarEquipoBasico().pruebaDeSonido();
+                    break;
 
-        final BandsEquipment bandsEquipment = new BandsEquipment();
-        bandsEquipment.pruebaDeSonido();
+                case 2:
+                    BandsEquipment.generarEquipoFull().pruebaDeSonido();
+                    break;
 
-//
-//        Menu menu = new Menu();
-//        menu.mostrarMenu();
-//        int opcion = menu.getOpcion();
-//
-//        boolean fin = false;
-//
-//        while (!fin) {
-//
-//            switch (opcion) {
-//
-//                case 1:
-//                    final BandsEquipment bandsEquipment = new BandsEquipment();
-////                    for (String s : bandsEquipment.) {
-////
-////                    }
-//                    break;
-//
-//                case 2:
-//
-//                    break;
-//
-//                case 3:
-//
-//                    break;
-//
-//                case 4:
-//                    menu.printFinDelPrograma();
-//                    fin = true;
-//                    break;
-//
-//                default:
-//                    menu.printOpcionInvalida();
-//                    opcion = menu.getOpcion();
-//                    break;
-//            }
-//        }
+                case 3:
+                    menu.printCrearBandaOpciones();
+                    int opcionBanda = menu.getOpcion();
+
+                    final BandsEquipment customBand = BandsEquipment.generarEquipoVacio();
+
+                    while (opcionBanda != 5) {
+
+                        switch (opcionBanda) {
+                            case 1: // agregar guitarra
+                                final String guitarName = leerLinea("Ingrese el nombre");
+                                final int guitarStrings = leerEntero("Ingrese la cantidad de cuerdas", "Ingrese un numero");
+                                customBand.addStringedInstrument(new ElectricGuitar(guitarName, guitarStrings));
+                                break;
+                            case 2: // agregar bajo
+                                final String bassName = leerLinea("Ingrese el nombre");
+                                final int bassStrings = leerEntero("Ingrese la cantidad de cuerdas", "Ingrese un numero");
+                                customBand.addStringedInstrument(new ElectricBassGuitar(bassName, bassStrings));
+                                break;
+                            case 3: // agregar bateria
+                                final String drumName = leerLinea("Ingrese el nombre");
+                                final int platillos = leerEntero("Ingrese la cantidad de platillos", "Ingrese un numero");
+                                final int tambores = leerEntero("Ingrese la cantidad de tambores", "Ingrese un numero");
+                                customBand.addPercussionInstrument(new Drums(drumName, platillos, tambores));
+                                break;
+                            case 4: // prueba de sonido para el nuevo equipo
+                                customBand.pruebaDeSonido();
+                                break;
+                        }
+
+                        menu.printCrearBandaOpciones();
+                        opcionBanda = menu.getOpcion();
+                    }
+                    break;
+
+                case 4:
+                    menu.printFinDelPrograma();
+                    fin = true;
+                    break;
+
+                default:
+                    menu.printOpcionInvalida();
+                    break;
+            }
+        }
     }
 }

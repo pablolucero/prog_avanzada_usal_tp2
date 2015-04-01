@@ -15,8 +15,7 @@ public class IOManager {
             IOManager.print(mensajeError);
             scan.next();
         }
-        int n=scan.nextInt();
-        return n;
+        return scan.nextInt();
     }
 
     public static double leerDoble(String mensajeInicio, String mensajeError){
@@ -26,21 +25,18 @@ public class IOManager {
             IOManager.print(mensajeError);
             scan.next();
         }
-        double n=scan.nextDouble();
-        return n;
+        return scan.nextDouble();
     }
 
     public static String leerPalabra(String mensajeInicio){
         IOManager.print(mensajeInicio);
         Scanner scan=new Scanner(System.in);
-        String s=scan.next();
-        return s;
+        return scan.next();
     }
 
     public static String leerLinea(String mensajeInicio){
         IOManager.print(mensajeInicio);
         Scanner scan=new Scanner(System.in);
-        String s=scan.nextLine();
-        return s;
+        return scan.nextLine();
     }
 }

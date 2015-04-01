@@ -7,20 +7,19 @@ public class BandsEquipment {
     private List<PercussionInstrument> percussion = new ArrayList<>();
     private List<StringedInstrument> stringed = new ArrayList<>();
 
-    // Default constructor
-    public BandsEquipment() {
-        getPercussion().add(new Drums());
-        getStringed().add(new ElectricGuitar());
-        getStringed().add(new ElectricBassGuitar());
+    public static BandsEquipment generarEquipoVacio() {
+        return new BandsEquipment();
     }
 
-    public BandsEquipment(List<PercussionInstrument> percussion, List<StringedInstrument> stringed) {
-        this.percussion = percussion;
-        this.stringed = stringed;
+    public static BandsEquipment generarEquipoBasico() {
+        final BandsEquipment bandsEquipment = new BandsEquipment();
+        bandsEquipment.getPercussion().add(new Drums());
+        bandsEquipment.getStringed().add(new ElectricGuitar());
+        bandsEquipment.getStringed().add(new ElectricBassGuitar());
+        return bandsEquipment;
     }
 
-    public static BandsEquipment generarBandsEquipmentFull() {
-
+    public static BandsEquipment generarEquipoFull() {
         final BandsEquipment bandsEquipment = new BandsEquipment();
         bandsEquipment.getStringed().add(new ElectricGuitar("Gibson", 6));
         bandsEquipment.getStringed().add(new ElectricGuitar("Gibson", 6));
