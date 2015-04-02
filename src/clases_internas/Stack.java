@@ -8,7 +8,10 @@ public class Stack {
     private Node first;
     private int quantity;
 
-    public void push(Node node) {
+    public void push(String s) {
+        final Node node = new Node(s);
+        node.value = s;
+
         if (isEmpty()) {
             node.next = null;
             first = node;
@@ -39,7 +42,7 @@ public class Stack {
     }
 
     public boolean isEmpty() {
-        return first.next == null;
+        return first == null;
     }
 
     public void show() {
@@ -66,6 +69,19 @@ public class Stack {
             this.value = value;
             this.next = next;
         }
+    }
+
+    public static void main(String[] args) {
+
+        Stack s = new Stack();
+
+        s.push("a");
+        s.push("b");
+        s.push("c");
+        s.show();
+        System.out.println(s.peek());
+        System.out.println(s.pop());
+        s.show();
     }
 
 }
