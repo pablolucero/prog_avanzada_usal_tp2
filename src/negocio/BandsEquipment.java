@@ -20,7 +20,7 @@ public class BandsEquipment {
     }
 
     public static BandsEquipment generarEquipoFull() {
-        final BandsEquipment bandsEquipment = new BandsEquipment();
+        final BandsEquipment bandsEquipment = BandsEquipment.generarEquipoBasico();
         bandsEquipment.getStringed().add(new ElectricGuitar("Gibson", 6));
         bandsEquipment.getStringed().add(new ElectricGuitar("Gibson", 6));
         bandsEquipment.getStringed().add(new ElectricBassGuitar("Archer", 5));
