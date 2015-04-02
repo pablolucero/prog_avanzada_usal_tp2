@@ -1,32 +1,55 @@
 package clases_internas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Stack {
 
     private Node first;
     private int quantity;
 
-
-    public void push() {
-        // TODO:
+    public void push(Node node) {
+        if (isEmpty()) {
+            node.next = null;
+            first = node;
+        } else {
+            node.next = first;
+            first = node;
+        }
+        quantity++;
     }
 
     public String pop() {
-        // TODO:
-        return null;
+        if (!isEmpty()) {
+            final Node node = first;
+            first = node.next;
+            quantity--;
+            return node.value;
+        } else {
+            return null;
+        }
     }
 
     public String peek() {
-        // TODO:
-        return null;
+        if (!isEmpty()) {
+            return first.value;
+        } else {
+            return null;
+        }
     }
 
     public boolean isEmpty() {
-        // TODO:
-        return false;
+        return first.next == null;
     }
 
     public void show() {
-        // TODO:
+        List<String> listaValues = new ArrayList<>();
+        Node node = this.first;
+        while (node != null) {
+            listaValues.add(node.value);
+            node = node.next;
+        }
+        System.out.println(listaValues);
     }
 
     // clase interna
@@ -36,11 +59,13 @@ public class Stack {
         private Node next;
 
         public Node(String value) {
-
+            this.value = value;
         }
 
         public Node(String value, Node next) {
-
+            this.value = value;
+            this.next = next;
         }
     }
+
 }
