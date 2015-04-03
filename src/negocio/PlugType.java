@@ -7,7 +7,7 @@ public enum PlugType {
 
     private final String name;
 
-    private PlugType(String s) {
+    PlugType(String s) {
         name = s;
     }
 
